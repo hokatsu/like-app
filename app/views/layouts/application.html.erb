@@ -4,12 +4,30 @@
     <title>LikeApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <%= yield %>
+    <header class="header">
+      <div class="header-contents">
+        <div class="header-left">
+          <h1 class="app-name"><a href="/">LikeApp</a></h1>
+        </div>
+
+        <div class="header-right">
+          <% if user_signed_in? %>
+              <a class="current-name" href="/users/<%= current_user.id %>">
+                <%= current_user.name %>
+              </a>
+              <%= link_to "ログアウト", destroy_user_session_path,class: "btn", method: :delete %>
+              <%= link_to  "投稿する", new_tweet_path, class: "btn" %>
+          <% else %>
+              <%= link_to "ログイン", new_user_session_path, class: "btn" %>
+              <%= link_to "新規登録", new_user_registration_path, class: "btn" %>
+          <% end %>
+        </div>
+      </div>
+    </header>
+      <%= yield %>
   </body>
 </html>

@@ -1,0 +1,14 @@
+<div class="tweet">
+  <p class = "tweet-text"><%= tweet.text %></p>
+  <div class="tweet-name">
+    <% if user_signed_in? %>
+      <a href="/users/<%= tweet.user.id %>">
+        <span>投稿者：</span><%= tweet.user.name %>
+     </a>
+    <% else %>
+      <a href="/users/sign_in">
+        <span>投稿者：</span><%= tweet.user.name %>
+      </a>
+    <% end %>   
+  </div>
+</div>
