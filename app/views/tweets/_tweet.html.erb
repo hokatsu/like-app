@@ -11,4 +11,11 @@
       </a>
     <% end %>   
   </div>
+  <div class="tweet_likes">
+    <% if user_signed_in? && tweet.liked_by?(current_user)%>
+      <p><%=link_to "いいね済", tweet_likes_path(tweet.id), method: :delete %></p>
+    <% else %>
+      <p><%=link_to "いいねする", tweet_likes_path(tweet.id), method: :post %></p>
+    <% end %>
+  </div>
 </div>
