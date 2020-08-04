@@ -1,5 +1,5 @@
 class LikesController < ApplicationController
-  before_action :find_tweet
+  before_action :set_tweet
 
   def create
     like = current_user.likes.build(tweet_id: params[:tweet_id])
@@ -13,7 +13,7 @@ class LikesController < ApplicationController
     render 'destroy.js.erb'
   end
   
-  def find_tweet
+  def set_tweet
     @tweet = Tweet.find(params[:tweet_id])
   end
 
