@@ -12,6 +12,8 @@
     <% end %>   
   </div>
   <div id="like-btn<%= tweet.id %>">
-    <%= render partial: "likes/like", locals: { tweet: tweet } %>
+    <% if user_signed_in? %>
+      <%= render partial: "likes/like", locals: { tweet: tweet } %>
+    <% end %>
   </div>
 </div>
